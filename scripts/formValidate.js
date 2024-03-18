@@ -1,74 +1,5 @@
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const modalCloseBtn = document.getElementById("modal-close-btn");
-const modalForm = document.getElementById("modal-form");
-const barIcon = document.getElementById("navbar-icon");
-const btnCloseConfirm = document.querySelector(".btn-close-confirmation");
-const confirmCloseIcon = document.getElementById("confirmation-close-btn");
+// Fields validation DOM elements
 
-// edit nav form
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
-//edit nav event
-
-barIcon.addEventListener("click", editNav);
-
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-}
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// close modal form
-function closeModal() {
-  modalbg.style.display = "none";
-}
-
-// close modal event
-modalCloseBtn.addEventListener("click", closeModal);
-
-//confirmation message form
-
-function validateModalForm(event) {
-  event.preventDefault();
-
-  const successMsg = document.getElementById("confirmation-msg");
-
-  if (formValidation() == true) {
-    modalForm.reset();
-    closeModal();
-    successMsg.style.display = "flex";
-  } else {
-    forAllFieldsValidation();
-  }
-}
-
-//confirmation message event
-
-modalForm.addEventListener("submit", validateModalForm);
-
-//close confirmation form
-function closeModalConfirmation() {
-  modalbg.style.display = "none";
-  window.location.reload();
-}
-
-//close confirmation event
-
-btnCloseConfirm.addEventListener("click", closeModalConfirmation);
-confirmCloseIcon.addEventListener("click", closeModalConfirmation);
-
-// DOM ELEMENTS FORM FIELDS VALIDATION
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
@@ -80,8 +11,9 @@ const terms = document.getElementById("terms");
 const input = document.getElementsByClassName("text-control");
 const form = document.getElementById("form");
 
-// ------ FORM FIELDS VALIDATION ------ //
-// NAMES CHECK (FIRST NAME AND LAST NAME)
+// Form fields validation
+
+// Names validation
 function checkFirstName() {
   let regexFirstLast = new RegExp("^[a-zA-Z-éè ]+$");
   if (
@@ -114,7 +46,7 @@ function checkLastName() {
   return true;
 }
 
-// EMAIL CHECK
+// email validation
 function checkEmail() {
   let regexEmail = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
   if (email.value.trim().match(regexEmail)) {
@@ -127,7 +59,7 @@ function checkEmail() {
   return false;
 }
 
-// BIRTHDATE CHECK
+// Birthdate validation
 function checkBirthdate() {
   if (birthdate.value.trim().length !== 10) {
     birthdate.parentElement.setAttribute("data-error-visible", "true");
@@ -139,8 +71,8 @@ function checkBirthdate() {
   return true;
 }
 
-// NUMBER OF TOURNAMENTS CHECK
-function checkTournamentsQuantity() {
+// quantity validation
+function checkQuantity() {
   if (
     quantity.value.trim().length === 0 ||
     isNaN(quantity.value.trim()) === true ||
@@ -155,7 +87,7 @@ function checkTournamentsQuantity() {
   return true;
 }
 
-// LOCATIONS CHECK
+// locations valisation
 function checkLocations() {
   allLocations.setAttribute("data-error-visible", "true");
   for (let i = 0; i < locations.length; i++) {
@@ -167,8 +99,8 @@ function checkLocations() {
   return false;
 }
 
-// TERMS OF USE CHECK CHECK
-function checkCheckBox() {
+// terms validation
+function checkTermsCheckBox() {
   if (terms.checked === false) {
     terms.parentElement.setAttribute("data-error-visible", "true");
     return false;
@@ -185,9 +117,9 @@ formFieldsValidation(firstName, checkFirstName, "focusout");
 formFieldsValidation(lastName, checkLastName, "focusout");
 formFieldsValidation(email, checkEmail, "focusout");
 formFieldsValidation(birthdate, checkBirthdate, "focusout");
-formFieldsValidation(quantity, checkTournamentsQuantity, "focusout");
+formFieldsValidation(quantity, checkQuantity, "focusout");
 formFieldsValidation(allLocations, checkLocations, "change");
-formFieldsValidation(terms, checkCheckBox, "change");
+formFieldsValidation(terms, checkTermsCheckBox, "change");
 
 // FOR ALL FIELDS VALIDATION
 function forAllFieldsValidation() {
@@ -195,9 +127,9 @@ function forAllFieldsValidation() {
   checkLastName();
   checkEmail();
   checkBirthdate();
-  checkTournamentsQuantity();
+  checkQuantity();
   checkLocations();
-  checkCheckBox();
+  checkTermsCheckBox();
 }
 
 function formValidation() {
@@ -206,9 +138,9 @@ function formValidation() {
     checkLastName() === true &&
     checkEmail() === true &&
     checkBirthdate() === true &&
-    checkTournamentsQuantity() === true &&
+    checkQuantity() === true &&
     checkLocations() === true &&
-    checkCheckBox() === true
+    checkTermsCheckBox() === true
   ) {
     return true;
   }
