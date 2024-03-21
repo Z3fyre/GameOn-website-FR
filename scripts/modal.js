@@ -6,6 +6,9 @@ const modalForm = document.getElementById("modal-form");
 const barIcon = document.getElementById("navbar-icon");
 const btnCloseConfirm = document.querySelector(".btn-close-confirmation");
 const confirmCloseIcon = document.getElementById("confirmation-close-btn");
+const heroModalOpen = document.querySelector(".hero-section");
+const footerModalOpen = document.querySelector("footer");
+const formBtn = document.querySelector(".btn-submit")
 
 // edit nav form
 function editNav() {
@@ -24,12 +27,12 @@ barIcon.addEventListener("click", editNav);
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  heroModalOpen.style.display = "none";
+  footerModalOpen.style.display = "none";
 }
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-
 
 // close modal form
 function closeModal() {
@@ -57,7 +60,7 @@ function validateModalForm(event) {
 
 //confirmation message event
 
-modalForm.addEventListener("submit", validateModalForm);
+formBtn.addEventListener("click", validateModalForm);
 
 //close confirmation form
 function closeModalConfirmation() {
