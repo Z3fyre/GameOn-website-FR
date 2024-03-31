@@ -208,14 +208,38 @@ main {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  top:50px;
   color: #fff;
   padding-top: 10px;
+  margin-top: 15%
+}
+
+.content-conf {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+  
 }
 
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+.modal-conf-body {
+  padding: 15px 8%;
+  margin: 15px auto;
+  position: relative;
+  top: 30%;
+  display:flex;
+  flex-direction: column;
+  gap: 12rem;
 }
 
 label {
@@ -560,6 +584,7 @@ footer {
   background: #232323;
   color: #ffffff;
   margin: 5% auto;
+  margin-top: 15%;
   width: 100%;
   max-width: 500px;
   padding: 1em;
@@ -568,13 +593,14 @@ footer {
   text-align: center;
   vertical-align: middle;
   font-size: 18px;
+  max-height: 900px;
 }
 
 .confirmation-msg span {
   font-size: 24px;
   font-weight: bold;
   line-height: 48px;
-  color: #279e7a;
+  
 }
 
 @keyframes modalopen {

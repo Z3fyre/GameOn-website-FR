@@ -54,7 +54,7 @@ function validateModalForm(event) {
     closeModal();
     successMsg.style.display = "flex";
   } else {
-    forAllFieldsValidation();
+    fullFieldsValidation();
   }
 }
 

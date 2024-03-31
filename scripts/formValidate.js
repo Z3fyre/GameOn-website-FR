@@ -122,7 +122,7 @@ formFieldsValidation(allLocations, checkLocations, "change");
 formFieldsValidation(terms, checkTermsCheckBox, "change");
 
 // FOR ALL FIELDS VALIDATION
-function forAllFieldsValidation() {
+function fullFieldsValidation() {
   checkFirstName();
   checkLastName();
   checkEmail();
